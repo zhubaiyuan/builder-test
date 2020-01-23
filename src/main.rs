@@ -17,3 +17,19 @@ where
     #[builder(required)]
     f: U,
 }
+
+fn main() {
+    let item: Item<i32, &str> = Item::builder()
+        .a(42u32)
+        .b("hello")
+        .c("boom".to_owned())
+        .d(X {})
+        .e(42i32)
+        .f("hello")
+        .build();
+
+    println!("{:#?}", item);
+
+    let item2 = Item::<u32, u64>::builder().b(None).d(X {}).f(99u64).build();
+    println!("{:#?}", item2);
+}
